@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<title>Dimmer</title>
+	<script type="text/javascript"
+          	src="file:///opt/PalmSDK/Current/share/framework/enyo/1.0/framework/enyo.js">
+	</script>
+	<style type="text/css">
+#app {
+	background-image: url('images/bg.jpg');
+}
+	</style>
+	<script type="text/javascript">
+
+(function() {
+	enyo.kind({
+		name: "App",
+		kind: "VFlexBox",
+		components: [{
+        kind: 'Dimmer',
+        minimum: 0, maximum: 0.5, position: 0.45,
+        onChanging: 'changing', onChanged: 'changed'
+      }
+		],
+
+    changed: function(sender, value) {
+      console.log('changed:', value);
+    },
+
+    changing: function(sender, value) {
+      console.log('changing:', value);
+    }//,
+
+    // clickHandler: function(sender) {
+    //   if (sender.hasClass('dimmer-overlay'))
+    //     this.$.dimmer.setPosition(0.25);
+    // }
+	});
+})();
+
+	</script>
+</head>
+<body>
+<script type="text/javascript">
+
+  (function() {
+    new App().renderInto(document.body);
+  })();
+
+</script>
+</body>
+</html>
